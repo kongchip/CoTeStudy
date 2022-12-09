@@ -7,3 +7,4 @@ function solution(arr)
     }
     return result;
 }
+ 
