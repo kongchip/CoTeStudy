@@ -1,10 +1,10 @@
 function solution(arr)
 {
-    let result = [];
+    let answer = [];
     for(let i = 0; i < arr.length; i++){
         if(arr[i] !== arr[i+1])
-        result.push(arr[i])
+        answer.push(arr[i])
     }
-    return result;
+    return answer;
 }
  
