@@ -7,15 +7,18 @@ function solution(a, b, n) {
     let rest = 0;
     // n이 a보다 크거나 같을때 까지 반복문
     while(totalBottle >= a){
-        if(totalBottle%a === 0){
-            result += totalBottle/a*b;
-        } else {
-            result += Math.floor(totalBottle/a)*b;
-            rest = totalBottle % a;
-        }
+        result += Math.floor(totalBottle/a)*b;
+        rest = totalBottle % a;
         totalBottle = Math.floor(totalBottle/a)*b + rest;
-        rest = 0;
-
+        
+        // if(totalBottle%a === 0){
+        //     result += totalBottle/a*b;
+        // } else {
+        //     result += Math.floor(totalBottle/a)*b;
+        //     rest = totalBottle % a;
+        // }
+        // totalBottle = Math.floor(totalBottle/a)*b + rest;
+        // rest = 0;
     }
     return result;
 }
