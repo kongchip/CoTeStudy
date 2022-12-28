@@ -1,8 +1,8 @@
 function solution(s, n) {
     // 유니코드로 바꾸는 매소드 charCodeAt() // A: 65 | Z: 90 | a: 97 | z: 122 
     // 유니코드를 문자열로 바꾸는 매소드 String.fromCharCode()
-    let answer = ''
-    let s_unicode = 0;
+    // let answer = ''
+    // let s_unicode = 0;
 //     let s_split = s.split('')
     
 //     for(let i = 0; i < s_split.length; i++){
