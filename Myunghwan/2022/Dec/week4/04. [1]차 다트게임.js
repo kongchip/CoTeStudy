@@ -21,9 +21,9 @@ function solution(dartResult) {
             } 
             else sum = dartResult[i];
         }
-        else if(dartResult[i] === "S") arr.push(sum);
-        else if (dartResult[i] === "D") arr.push(Math.pow(sum,2));
-        else if (dartResult[i] === "T") arr.push(Math.pow(sum,3));
+        else if(dartResult[i] === "S") arr.push(Number(sum));
+        else if (dartResult[i] === "D") arr.push(Number(Math.pow(sum,2)));
+        else if (dartResult[i] === "T") arr.push(Number(Math.pow(sum,3)));
         else if (dartResult[i] === "*") {
         arr[arr.length-1] *= 2;
         arr[arr.length-2] *= 2;
@@ -33,5 +33,6 @@ function solution(dartResult) {
     for(let i=0; i<arr.length; i++) {
     result += Number(arr[i]);
     }
+    // console.log(arr)
     return result;
 }
