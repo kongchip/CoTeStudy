@@ -15,7 +15,7 @@ function solution(dartResult) {
     
     for(let i=0; i<dartResult.length; i++) {
         if(dartResult[i] >= 0 && dartResult[i] <= 9 ) {
-            if( dartResult[i] == 1 && dartResult[i+1] == 0 ) {
+            if( dartResult[i] === '1' && dartResult[i+1] === '0' ) {
                 sum = 10;
                 i++;
             } 
