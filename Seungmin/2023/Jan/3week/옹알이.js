@@ -5,11 +5,12 @@ function solution(babbling) {
     babbling.forEach(el => {
         let temp = el;
         for(let i=0; i<arr.length; i++){
-            temp = temp.split(arr[i]).join('');
-        
-            // 같은 발음일 경우에 대한 예외 처리 필요
+            
+            if(el.includes(arr[i].repeat(2))) break;
 
-            if(temp === ''){
+            temp = temp.split(arr[i]).join(' ');
+
+            if(temp.split(' ').join('') === ''){
                 result++;
                 break;
             }
