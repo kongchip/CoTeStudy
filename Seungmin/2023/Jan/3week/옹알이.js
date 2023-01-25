@@ -1,21 +1,15 @@
-function solution(babbling) {
-    let result = 0;
-    let arr = ["aya", "ye", "woo", "ma"];
-    
-    babbling.forEach(el => {
-        let temp = el;
-        for(let i=0; i<arr.length; i++){
-            
-            if(el.includes(arr[i].repeat(2))) break;
+function solution(s) {
+    let result = '';
+    let arr = s.toLowerCase().split(' ');
 
-            temp = temp.split(arr[i]).join(' ');
-
-            if(temp.split(' ').join('') === ''){
-                result++;
-                break;
-            }
+    for(let i=0; i<arr.length; i++){
+        for(let j=0; j<arr[i].length; j++){
+            if(j === 0) result += arr[i][j].toUpperCase();
+            else result += arr[i][j]
         }
-    })
+    
+        if(i < arr.length-1) result += ' ';
+    }
 
     return result;
 }
