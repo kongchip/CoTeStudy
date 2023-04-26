@@ -4,6 +4,7 @@
 //     let obj = {}
 //     let answer = 0
 
+// 빈도수 세기 패턴
 //     // 크기에 따라서 obj 화
 //     for (let i = 0; i < tangerine.length; i++) {
 //         const t = tangerine[i]
@@ -42,3 +43,6 @@ function solution(k, tangerine) {
     }
     return answer;
 }
+
+
+//포기 ㅠㅠ
