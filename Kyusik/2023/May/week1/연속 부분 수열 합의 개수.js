@@ -5,7 +5,7 @@ function solution(elements) {
   for (let i = 0; i < elements.length; i++) {
     const newArr = elements.concat(elements.slice(0, i));
 
-    for (let j = 0; j < elements.length + i; j++) {
+    for (let j = 0; j < elements.length; j++) {
       resultSet.add(newArr.slice(j, j + i).reduce((acc, cur) => acc + cur, 0));
     }
   }
