@@ -5,65 +5,47 @@ function solution(str1, str2) {
     // some 메서드를 사용하여 비교돌리며 카운트 올려주고
     // 카운트 / 전체 카운트 * 65536
 
-    if (str1.length === 0 && str2.length === 0) return 65536
-
-    str1 = str1.toLowerCase().replace(/[^A-Za-z]/g, "")
-    str2 = str2.toLowerCase().replace(/[^A-Za-z]/g, "")
-
+    const regex = /[\W0-9_]/
 
     let a = []
     let b = []
 
-
+    // 합집합
     let concat = new Set()
 
-    for (let i = 0; i < str1.length; i++) {
-        if (i + 1 === str1.length) {
-            break
-        } else {
-            a.push(str1[i] + str1[i + 1])
-            concat.add(str1[i] + str1[i + 1])
-        }
+    for (let i = 1; i < str1.length; i++) {
+        const letter = str1[i - 1] + str1[i]
+        if (regex.test(letter)) continue
+        a.push(letter.toLowerCase())
     }
 
-    for (let i = 0; i < str2.length; i++) {
-        if (i + 1 === str2.length) {
-            break
-        } else {
-            b.push(str2[i] + str2[i + 1])
-            concat.add(str2[i] + str2[i + 1])
-        }
+    for (let i = 1; i < str2.length; i++) {
+        const letter = str2[i - 1] + str2[i]
+        if (regex.test(letter)) continue
+        b.push(letter.toLowerCase())
     }
 
-    let count = 0
+    if (a.length === 0 && b.length === 0) return 65536
 
+    // 교집합의 수
+    let same = []
+    let all = []
 
     for (let i = 0; i < a.length; i++) {
         if (b.includes(a[i])) {
-            count++
-            b.splice(b.indexOf(a[i]), 1)
+            const idx = b.indexOf(a[i]);
+            b.splice(idx, 1);
+            same.push(a[i])
+        } else {
+            all.push(a[i])
         }
     }
 
 
-    let jaccard = Math.floor((count / (concat.size)) * 65536);
+    b.forEach((e) => all.push(e))
+
+    let jaccard = Math.floor((same.length / (same.length + all.length)) * 65536);
 
     return jaccard
 
 }
-
-// 포기 ;;
-
-// 테스트 1 〉	통과 (0.16ms, 33.6MB)
-// 테스트 2 〉	통과 (0.17ms, 33.5MB)
-// 테스트 3 〉	실패 (0.17ms, 33.5MB)
-// 테스트 4 〉	실패 (0.89ms, 33.6MB)
-// 테스트 5 〉	실패 (0.18ms, 33.5MB)
-// 테스트 6 〉	통과 (0.17ms, 33.5MB)
-// 테스트 7 〉	실패 (0.31ms, 33.4MB)
-// 테스트 8 〉	실패 (0.19ms, 33.4MB)
-// 테스트 9 〉	실패 (0.31ms, 33.5MB)
-// 테스트 10 〉	실패 (0.36ms, 33.5MB)
-// 테스트 11 〉	실패 (0.73ms, 33.6MB)
-// 테스트 12 〉	통과 (0.16ms, 33.5MB)
-// 테스트 13 〉	통과 (0.29ms, 33.5MB)
