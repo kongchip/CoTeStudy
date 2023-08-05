@@ -5,8 +5,7 @@
 0 1 0
 3 3 3
 4 4 4
-5 5 100
-*/
+5 5 100 */
 
 const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
