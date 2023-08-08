@@ -3,7 +3,7 @@ const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
 /*
-3 4
+4 3
 1 1 1
 2 2 2
 0 1 0
