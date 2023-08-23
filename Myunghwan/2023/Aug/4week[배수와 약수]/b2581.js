@@ -7,21 +7,27 @@ let input = fs
   .split('\n')
   .map((el) => +el);
 
-function isPrime(num) {
-  if (N === 1) return false;
-  for (let i = 2; i <= Math.sqrt(N); i++) {
-    if (N % i === 0) return false;
+let arr = [];
+// 소수찾는 코드
+const isPrime = function (n) {
+  if (n === 1) {
+    return false;
   }
-  return true;
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return arr.push(n);
+};
+let [M, N] = [input[0], input[1]];
+for (let i = M; i <= N; i++) {
+  isPrime(i);
 }
 
-let [M, N] = [input[0], input[1]];
-let arr = [];
-
-function isPrime(num) {
-  if (N === 1) return false;
-  for (let i = 2; i <= Math.sqrt(N); i++) {
-    if (N % i === 0) return false;
-  }
-  return true;
+if (arr.length === 0) {
+  console.log(-1);
+} else {
+  console.log(arr.reduce((acc, cur) => acc + cur));
+  console.log(Math.min(...arr));
 }
