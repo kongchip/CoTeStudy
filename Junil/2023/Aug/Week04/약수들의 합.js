@@ -1,5 +1,5 @@
 // const input = require("fs").readFileSync("/dev/stdin").toString().split('\n').map((el) => el.split(' ').map(Number))
-let input = require('fs').readFileSync(__dirname+'/input.txt').toString().split('\n')
+let input = require('fs').readFileSync(__dirname+'/input.txt').toString().trim().split('\n')
 
 function isPerfect(number){
     let totalDivisor = 1
@@ -13,7 +13,6 @@ function isPerfect(number){
     }
     return totalDivisor === number
 }
-
 function getDivisors(number) {
     const divisors = []
 
@@ -22,10 +21,8 @@ function getDivisors(number) {
         divisors.push(i)
       }
     }
-  
     return divisors
 }
-
 
 for (let i = 0 ; i < input.length - 1; i++){
     if(isPerfect(Number(input[i]))){
@@ -34,5 +31,6 @@ for (let i = 0 ; i < input.length - 1; i++){
     } else {
         console.log(`${input[i]} is NOT perfect.`)
     }
+    
 }
 
