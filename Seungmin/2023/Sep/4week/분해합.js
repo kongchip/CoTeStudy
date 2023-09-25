@@ -2,7 +2,7 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : __dirname + '/input.txt';
 let input = parseInt(fs.readFileSync(filePath).toString().trim());
 
-const disassemble = () => {
+const solution = () => {
   let result;
 
   for (let i = 1; i < input; i++) {
@@ -21,4 +21,4 @@ const disassemble = () => {
   console.log(result || 0);
 }
 
-disassemble()
+solution()

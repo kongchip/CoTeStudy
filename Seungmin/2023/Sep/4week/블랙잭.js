@@ -6,7 +6,7 @@ const max = input[0].split(' ').map(Number)[1];
 const cards = input[1].split(' ').map(Number).sort((a, b) => a - b);
 let result = 0;
 
-const blackJack = () => {
+const solution = () => {
   for (let i = 0; i < cards.length; i++) {
     for (let j = i + 1; j < cards.length; j++) {
       for (let k = j + 1; k < cards.length; k++) {
@@ -23,7 +23,6 @@ const blackJack = () => {
   }
 
   console.log(result)
-  return
 }
 
-blackJack()
+solution()
