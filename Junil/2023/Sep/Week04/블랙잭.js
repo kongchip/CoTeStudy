@@ -5,6 +5,7 @@ const M = input[0][1]
 
 // N + x + x <= M
 
+
 let ans = 0
 
 for (let i = 0; i < N - 2; i++) {

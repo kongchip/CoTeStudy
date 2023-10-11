@@ -12,7 +12,7 @@ const answer = []
 
 
 for (let i = 0 ; i <= size[0] - 8; i++ ){
-    for (let j = 0 ; j <= size[1] - 1 ; j++){
+    for (let j = 0 ; j <= size[1] - 8 ; j++){
 
         for (let z = 0 ; z < 2 ; z++){ // 라인 패턴을 확인하는 반복문
             let count = 0
