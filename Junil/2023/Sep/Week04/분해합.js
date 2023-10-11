@@ -8,6 +8,7 @@ let ans = 0
 
 
 for (let i = 0 ; i <= sum ; i++){
+    // 생성자 분해 및 합
     const 생성자 = i.toString().split('').map((el) => Number(el)).reduce((acc, cur) => acc + cur, 0)
 
     if(i + 생성자 === sum){
