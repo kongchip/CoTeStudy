@@ -44,10 +44,11 @@ aArr.forEach((el, idx) => {
 });
 
 for (let i = 0; i < input.length; i++) {
-  result.push(obj[input[i]]);
+  // result.push(obj[input[i]]);
+  result += obj[input[i]] + ' ';
 }
-console.log(result.join(' '));
-
+// console.log(result.join(' '));
+console.log(result);
 // -------- 시간 초과 --------
 
 // let input = fs.readFileSync(filePath).toString().trim().split('\n');
