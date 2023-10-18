@@ -30,40 +30,42 @@ const filePath = process.platform === 'linux' ? '/dev/stdin' : '../input.txt';
 
 // -------- 시간 초과 --------
 
-// let input = fs.readFileSync(filePath).toString().trim().split('\n');
-// input.shift();
-// input = input[0].split(' ').map((el) => +el);
+let input = fs.readFileSync(filePath).toString().trim().split('\n');
+input.shift();
+input = input[0].split(' ').map((el) => +el);
 
 // let aArr = Array(...new Set(input)).sort((a, b) => a - b);
-// let obj = {};
-// let result = [];
+let aArr = [...new Set(input)].sort((a, b) => a - b);
+let obj = {};
+let result = [];
 
-// aArr.forEach((el, idx) => {
-//   obj[el] = idx;
-// });
-
-// for (let i = 0; i < input.length; i++) {
-//   result.push(obj[input[i]]);
-// }
-// console.log(result.join(' '));
-
-// -------- 시간 초과 --------
-
-let input = fs.readFileSync(filePath).toString().trim().split('\n');
-let N = Number(input.shift());
-let arr = input[0].split(' ').map((x) => +x);
-
-let set = new Set(arr);
-let uniq = [...set].sort((a, b) => a - b);
-
-let dic = {};
-uniq.forEach((e, index) => {
-  dic[e] = index;
+aArr.forEach((el, idx) => {
+  obj[el] = idx;
 });
 
-let answer = '';
-for (let i = 0; i < arr.length; i++) {
-  answer += dic[arr[i]] + ' ';
+for (let i = 0; i < input.length; i++) {
+  // result.push(obj[input[i]]);
+  result += obj[input[i]] + ' ';
 }
+// console.log(result.join(' '));
+console.log(result);
+// -------- 시간 초과 --------
 
-console.log(answer);
+// let input = fs.readFileSync(filePath).toString().trim().split('\n');
+// let N = Number(input.shift());
+// let arr = input[0].split(' ').map((x) => +x);
+
+// let set = new Set(arr);
+// let uniq = [...set].sort((a, b) => a - b);
+
+// let dic = {};
+// uniq.forEach((e, index) => {
+//   dic[e] = index;
+// });
+
+// let answer = '';
+// for (let i = 0; i < arr.length; i++) {
+//   answer += dic[arr[i]] + ' ';
+// }
+
+// console.log(answer);
