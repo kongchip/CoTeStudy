@@ -2,8 +2,8 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : '../input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
-let [numA_a, numA_b] = input[0].split(' ').map((el) => +el);
-let [numB_a, numB_b] = input[1].split(' ').map((el) => +el);
+let [numA, denA] = input[0].split(' ').map((el) => +el);
+let [numB, denB] = input[1].split(' ').map((el) => +el);
 // 분모의 최소 공배수를 구하고, 그 수만큼 분자의 값을 곱한후 더하기
 
 function gcd(a, b) {
@@ -15,12 +15,17 @@ function lcm(a, b) {
   return (a * b) / gcd(a, b);
 }
 
-let N = lcm(numA_b, numB_b) / numA_b;
-let M = lcm(numA_b, numB_b) / numB_b;
-let result = N * numA_a + M * numB_a;
-let result2 = lcm(numA_b, numB_b);
-// console.log(N * numA_a + M * numB_a + ' ' + lcm(numA_b, numB_b));
-let answer = 0;
-if (result % result2 === 0) {
-  console.log(result / result2 + ' ' + 1);
-} else console.log(result + ' ' + result2);
+// 각 분모의 최소 공배수
+let a = lcm(denA, denB);
+
+// 각 분모에 맞는 분자가 증가한 값의 합
+let b = (a / denA) * numA + (a / denB) * numB;
+
+// 기약분수
+let maxNum = 1;
+for (let i = 1; i <= a; i++) {
+  if (a % i === 0 && b & (i === 0)) {
+    maxNum = i;
+  }
+}
+console.log(b / maxNum, a / maxNum);
