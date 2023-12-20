@@ -2,133 +2,113 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : __dirname + '/input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n').map(el => el.split(' '));
 
-// 런타임 에러(Type Error)
+class ListNode {
+  constructor(item) {
+    this.item = item
+    this.next = null
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null
+    this.tail = null
+    this.size = 0
+  }
+
+  push(item) {
+    let node = new ListNode(item)
+
+    if(!this.head) {
+      this.head = node
+      this.head.next = this.tail
+    } else {
+      this.tail.next = node
+    }
+
+    this.tail = node
+    this.size++
+  }
+
+  getSize() {
+    return this.size
+  }
+
+  pop() {
+    if(this.size > 2) {
+      let item = this.head.item
+      let newHead = this.head.next
+
+      this.head = newHead
+      this.size--
+
+      return item
+    } else if (this.size === 2) {
+      let item = this.head.item
+      let newHead = this.head.next
+
+      this.head = newHead
+      this.tail = newHead
+      this.size--
+
+      return item
+    } else if (this.size === 1) {
+      let item = this.head.item
+      let newHead = this.head.next
+
+      this.head = null
+      this.tail = null
+      this.size--
+
+      return item
+    } else {
+      return -1
+    }
+  }
+
+  empty() {
+    return this.size ? 0 : 1
+  }
+
+  getFirst() {
+    return this.head ? this.head.item : -1
+  }
+
+  getLast() {
+    return this.tail ? this.tail.item : -1
+  }
+}
+
 const solution = () => {  
   let result = []
-
-  class ListNode {
-    constructor(value = null) {
-      this.value = value
-      this.next = null
-    }
-  }
-
-  class LinkedList {
-    constructor(head = null) {
-      this.head = head
-    }
-
-    size() {
-      let count = 0
-      let node = this.head
-      
-      while(node) {
-        count++
-        node = node.next
-      }
-
-      return count
-    }
-
-    getFirst() {
-      return this.head
-    }
-
-    getLast() {
-      let lastNode = this.head
-      
-      if(lastNode) {
-        while(lastNode.next) {
-          lastNode = lastNode.next
-        }
-      }
-
-      return lastNode
-    }
-  }
+  let queue = new LinkedList()
 
   input.shift()
-
-  let queue = new LinkedList()
 
   input.forEach(el => {
     let command = el[0]
 
     switch(command) {
       case 'push' :
-        if(queue.size() === 0 ) {
-          queue.head = new ListNode(el[1])
-        } else {
-          queue.getLast().next = new ListNode(el[1])
-        }
+        queue.push(el[1])
         break
       case 'pop' :
-        if(queue.size() > 0) {
-          // result += `${queue.getFirst().value}\n`
-          result.push(queue.getFirst().value)
-
-          queue.head = queue.head.next
-        } else {
-          // result += `-1\n`
-          result.push('-1')
-        }
+        result.push(queue.pop())
         break
       case 'size' :
-        // result += `${queue.size()}\n`
-        result.push(queue.size().toString())
+        result.push(queue.getSize())
         break
       case 'empty' :
-        // result += `${queue.size() === 0 ? '1' : '0'}\n`
-        result.push(queue.size() === 0 ? '1' : '0')
+        result.push(queue.empty())
         break
       case 'front' :
-        // result += `${queue.getFirst().value ? queue.getFirst().value : '-1'}\n`
-        result.push(queue.getFirst().value ? queue.getFirst().value : '-1')
+        result.push(queue.getFirst())
         break
       case 'back' :
-        // result += `${queue.getLast().value ? queue.getLast().value : '-1'}\n`
-        result.push(queue.getLast().value ? queue.getLast().value : '-1')
+        result.push(queue.getLast())
         break
     }
   })
-
-  // 시간초과
-  // input.forEach(el => {
-  //   let queueSize = queue.length
-  //   let command = el[0]
-
-  //   switch(command) {
-  //     case 'push' :
-  //       // queue.push(el[1])
-
-  //       break
-
-  //     case 'pop' :
-  //       // result.push(queueSize > 0 ? queue.shift() : '-1')
-  //       result += `${queueSize > 0 ? queue.shift() : '-1'}\n`
-  //       break
-
-  //     case 'size' :
-  //       // result.push(queueSize)
-  //       result += `${queueSize}\n`
-  //       break
-      
-  //     case 'empty' :
-  //       // result.push(queueSize === 0 ? '1' : '0')
-  //       result += `${queueSize === 0 ? '1' : '0'}\n`
-  //       break
-
-  //     case 'front' :
-  //       // result.push(queueSize > 0 ? queue[0] : '-1')
-  //       result += `${queueSize > 0 ? queue[0] : '-1'}\n`
-  //       break
-      
-  //     case 'back' :
-  //       // result.push(queueSize > 0 ? queue[queueSize - 1] : '-1')
-  //       result += `${queueSize > 0 ? queue[queueSize - 1] : '-1'}\n`
-  //       break
-  //   }
-  // })
 
   console.log(result.join('\n'))
 }
