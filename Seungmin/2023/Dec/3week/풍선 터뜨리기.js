@@ -115,14 +115,13 @@ class LinkedList {
   }
 }
 
+// 양수면 풍선숫자-1만큼 shift해서 push -> 첫번째거 인덱스 shift
+// 음수면 풍선숫자+1만큼 pop해서 unshift -> 마지막거 인덱스 pop
 const solution = () => {  
   let result = '1' // [1]
   let deque = new LinkedList()
 
   input.forEach(el => deque.push(el))
-
-  // 양수면 풍선숫자-1만큼 shift해서 push -> 첫번째거 인덱스 shift
-  // 음수면 풍선숫자+1만큼 pop해서 unshift -> 마지막거 인덱스 pop
 
   let num = deque.shift().item
 
