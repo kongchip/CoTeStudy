@@ -1,8 +1,8 @@
 const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : '../input.txt';
+const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().trim();
 
-const N = Number(input);
+const K = Number(input);
 
 // 재귀
 
@@ -13,4 +13,4 @@ function factorial(n) {
   return n * factorial(n - 1);
 }
 
-console.log(factorial(N));
+console.log(factorial(K));
