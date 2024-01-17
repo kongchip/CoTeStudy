@@ -15,9 +15,9 @@ let arr = input;
 // 범위 : N개의 수들 중 최댓값과 최솟값의 차이
 
 let mean = Math.round(input.reduce((acc, cur) => acc + cur, 0) / input.length);
-if (mean === -0) {
-  mean = 0;
-}
+// if (mean === -0) {
+//   mean = 0;
+// }
 const median = input.sort((a, b) => a - b);
 const range = median[median.length - 1] - median[0];
 
@@ -43,8 +43,10 @@ function mode() {
   });
   return arr.length !== 1 ? arr[1] : arr[0];
 }
+let asd = [mean, median[Math.floor(input.length / 2)], mode(), range];
+console.log(asd.join('\n'));
 
-console.log(mean);
-console.log(median[Math.floor(input.length / 2)]);
-console.log(mode());
-console.log(range);
+// console.log(mean);
+// console.log(median[Math.floor(input.length / 2)]);
+// console.log(mode());
+// console.log(range);
